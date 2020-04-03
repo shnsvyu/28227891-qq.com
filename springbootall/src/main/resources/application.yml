@@ -1,0 +1,44 @@
+server:
+   port: 8088
+   tomcat:
+      uri-encoding: UTF-8
+spring:
+   datasource:
+      druid:
+         url: jdbc:mysql://134.134.2.27:3306/salary?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useOldAliasMetadataBehavior=true&useSSL=false
+         username: salary
+         password: bCg+fVR1skdTquXVUVAOu2bImtqMit9dssodrNtS3CC4UTD6SWzQb6YE9GDK9ZRdhe2nsSfR2vcCwx6yNpdHtQ==
+         # 使用druid数据源
+         driver-class-name: com.mysql.jdbc.Driver
+         maxActive: 20
+         initial-size: 5
+         max-wait: 60000
+         min-idle: 1
+         time-between-eviction-runs-millis: 60000
+         min-evictable-idle-time-millis: 300000
+         validation-query: select 1
+         test-while-idle: true
+         test-on-borrow: false
+         test-on-return: false
+         pool-prepared-statements: true
+         max-open-prepared-statements: 20
+         filters: config
+         connection-properties: config.decrypt=true;config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMqgDq0atvQdenspv+k64ZjdLqjNZjRk9u7gn2T/XHqmgWB6iI5GDZvAGv6I/TbfPHf/jsupPvrI+Qf6Z/qew/8CAwEAAQ==
+mybatis-plus:
+  type-aliases-package : com.ehr.*.entity
+  configuration : 
+      map-underscore-to-camel-case: true
+      cache-enabled: false
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
+      #驼峰下划线转换
+      column-underline: true
+      #逻辑删除配置
+      logic-delete-value: 0
+      field-strategy: not_empty
+      table-underline: true
+      db-type: mysql
+      #mapper-locations: classpath:/mapper/*.xml
+      #config-location:classpath:mybatis-config.xml
